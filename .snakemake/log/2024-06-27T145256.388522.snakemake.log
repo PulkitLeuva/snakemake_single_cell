@@ -1,0 +1,41 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+find_markers        1
+total               2
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 14:52:56 2024]
+localrule find_markers:
+    input: Clustering.rds
+    output: All_markers.txt, Top_Markers.txt
+    jobid: 4
+    reason: Code has changed since last execution; Params have changed since last execution
+    resources: tmpdir=/tmp
+
+[Thu Jun 27 14:53:10 2024]
+Error in rule find_markers:
+    jobid: 4
+    input: Clustering.rds
+    output: All_markers.txt, Top_Markers.txt
+    shell:
+        
+        echo "Please enter the resolution for Clusters: "
+        read dims
+        Rscript Find_Markers.R Clustering.rds All_markers.txt Top_Markers.txt $Resolutions TRUE 0.25 10 Heatmap_of_markers.pdf Clusters_of_Cells.pdf
+        code Top_Markers.txt
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-27T145256.388522.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

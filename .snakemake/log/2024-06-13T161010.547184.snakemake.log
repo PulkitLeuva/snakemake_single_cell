@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job       count
+------  -------
+sample        1
+total         1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 13 16:10:10 2024]
+localrule sample:
+    input: /home/pratik/IGIB/SCRNA_seq_data/SC3pv3_GEX_Human_PBMC_filtered_feature_bc_matrix.h5
+    output: pbmc.rds
+    jobid: 0
+    reason: Params have changed since last execution
+    resources: tmpdir=/tmp
+
+[Thu Jun 13 16:10:18 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-13T161010.547184.snakemake.log

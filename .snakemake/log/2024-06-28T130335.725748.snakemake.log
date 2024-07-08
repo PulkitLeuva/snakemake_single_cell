@@ -1,0 +1,45 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+clustering          1
+filtering           1
+find_markers        1
+sample              1
+total               5
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 28 13:03:35 2024]
+localrule sample:
+    input: /home/pratik/IGIB/SCRNA_seq_data/SC3pv3_GEX_Human_PBMC_filtered_feature_bc_matrix.h5
+    output: RDS_File/pbmc.rds
+    jobid: 1
+    reason: Missing output files: RDS_File/pbmc.rds
+    resources: tmpdir=/tmp
+
+[Fri Jun 28 13:05:59 2024]
+Error in rule sample:
+    jobid: 1
+    input: /home/pratik/IGIB/SCRNA_seq_data/SC3pv3_GEX_Human_PBMC_filtered_feature_bc_matrix.h5
+    output: RDS_File/pbmc.rds
+    shell:
+        
+        echo "Filter out features that are present in fewer than 'n' cells (n)=  "
+        read no_of_cells
+        echo "Filter out cells which have features less than < "
+        read no_of_features
+        Rscript sample.R /home/pratik/IGIB/SCRNA_seq_data/SC3pv3_GEX_Human_PBMC_filtered_feature_bc_matrix.h5 RDS_File/pbmc.rds $no_of_cells $no_of_features Results/Number_of_Genes.pdf Results/Miochondrial_percentage.pdf Results/scatter_plot.pdf
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-28T130335.725748.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

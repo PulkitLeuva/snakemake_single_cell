@@ -1,0 +1,45 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+clustering          1
+find_markers        1
+total               3
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 15:19:56 2024]
+localrule clustering:
+    input: Filtered_data.rds
+    output: Meta_Data.csv, Clustering.rds, Clustering_Resolutions.csv
+    jobid: 3
+    reason: Code has changed since last execution
+    resources: tmpdir=/tmp
+
+[Thu Jun 27 15:20:08 2024]
+Error in rule clustering:
+    jobid: 3
+    input: Filtered_data.rds
+    output: Meta_Data.csv, Clustering.rds, Clustering_Resolutions.csv
+    shell:
+        
+        code Elbow_plot.pdf
+        echo "Please enter the number of dimensions to use for PCA: "
+        read dims
+        Rscript Clustering_of_SC.R Filtered_data.rds Meta_Data.csv Clustering.rds $dims Clustering_Resolutions.csv
+        codeClustering_Resolutions.csv
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job clustering since they might be corrupted:
+Meta_Data.csv, Clustering.rds, Clustering_Resolutions.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-27T151956.137816.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

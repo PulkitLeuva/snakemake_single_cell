@@ -1,0 +1,69 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+clustering          1
+filtering           1
+find_markers        1
+total               4
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 28 15:26:58 2024]
+localrule filtering:
+    input: RDS_File/pbmc.rds
+    output: RDS_File/Filtered_data.rds
+    jobid: 1
+    reason: Code has changed since last execution
+    resources: tmpdir=/tmp
+
+[Fri Jun 28 15:28:05 2024]
+Finished job 1.
+1 of 4 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 28 15:28:05 2024]
+localrule clustering:
+    input: RDS_File/Filtered_data.rds
+    output: Results/Meta_Data.csv, RDS_File/Clustering.rds, Results/Clustering_Resolutions.csv
+    jobid: 2
+    reason: Input files updated by another job: RDS_File/Filtered_data.rds
+    resources: tmpdir=/tmp
+
+[Fri Jun 28 15:28:19 2024]
+Finished job 2.
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 28 15:28:19 2024]
+localrule find_markers:
+    input: RDS_File/Clustering.rds
+    output: Results/All_markers.txt, Results/Top_Markers.txt
+    jobid: 3
+    reason: Input files updated by another job: RDS_File/Clustering.rds
+    resources: tmpdir=/tmp
+
+[Fri Jun 28 15:28:38 2024]
+Finished job 3.
+3 of 4 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 28 15:28:38 2024]
+localrule all:
+    input: RDS_File/pbmc.rds, RDS_File/Filtered_data.rds, Results/Meta_Data.csv, RDS_File/Clustering.rds, Results/All_markers.txt, Results/Top_Markers.txt
+    jobid: 0
+    reason: Input files updated by another job: RDS_File/Clustering.rds, Results/Meta_Data.csv, Results/Top_Markers.txt, Results/All_markers.txt, RDS_File/Filtered_data.rds
+    resources: tmpdir=/tmp
+
+[Fri Jun 28 15:28:38 2024]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: .snakemake/log/2024-06-28T152658.099696.snakemake.log

@@ -1,0 +1,26 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job          count
+---------  -------
+filtering        1
+total            1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jun 24 09:58:52 2024]
+localrule filtering:
+    input: pbmc.rds
+    jobid: 0
+    reason: Rules with a run or shell declaration but no output are always executed.
+    resources: tmpdir=/tmp
+
+RuleException in rule filtering in file /home/pratik/snakemake/Snakemake_tutorial/Snakefile, line 20:
+AttributeError: 'Params' object has no attribute 'no_features_less', when formatting the following:
+
+        Rscript Filtering sc data.R {input.file} {params.no_of_features_grt} {params.no_features_less} {params.mitochondrial_percent} {params.find_variables} {params.top_features} {params.pdf1} {params.pdf2} {params.pdf3} {params.pdf4} {params.pdf5} {params.pdf6}
+        
+        

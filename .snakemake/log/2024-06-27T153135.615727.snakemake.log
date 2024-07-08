@@ -1,0 +1,54 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+clustering          1
+find_markers        1
+total               3
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 15:31:35 2024]
+localrule clustering:
+    input: Filtered_data.rds
+    output: Meta_Data.csv, Clustering.rds, Clustering_Resolutions.csv
+    jobid: 3
+    reason: Missing output files: Clustering.rds
+    resources: tmpdir=/tmp
+
+[Thu Jun 27 15:31:48 2024]
+Finished job 3.
+1 of 3 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 15:31:48 2024]
+localrule find_markers:
+    input: Clustering.rds
+    output: All_markers.txt, Top_Markers.txt
+    jobid: 4
+    reason: Input files updated by another job: Clustering.rds
+    resources: tmpdir=/tmp
+
+[Thu Jun 27 15:32:25 2024]
+Finished job 4.
+2 of 3 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 15:32:25 2024]
+localrule all:
+    input: pbmc.rds, Filtered_data.rds, Meta_Data.csv, Clustering.rds, All_markers.txt, Top_Markers.txt
+    jobid: 0
+    reason: Input files updated by another job: Meta_Data.csv, Clustering.rds, All_markers.txt, Top_Markers.txt
+    resources: tmpdir=/tmp
+
+[Thu Jun 27 15:32:25 2024]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2024-06-27T153135.615727.snakemake.log

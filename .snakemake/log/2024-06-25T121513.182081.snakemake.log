@@ -1,0 +1,69 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count
+----------  -------
+Clustering        1
+all               1
+filtering         1
+sample            1
+total             4
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 12:15:13 2024]
+localrule sample:
+    input: /home/pratik/IGIB/SCRNA_seq_data/SC3pv3_GEX_Human_PBMC_filtered_feature_bc_matrix.h5
+    output: pbmc.rds
+    jobid: 1
+    reason: Missing output files: pbmc.rds
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 12:15:23 2024]
+Finished job 1.
+1 of 4 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 12:15:23 2024]
+localrule filtering:
+    input: pbmc.rds
+    output: Filtered_data.rds
+    jobid: 2
+    reason: Missing output files: Filtered_data.rds; Input files updated by another job: pbmc.rds
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 12:15:34 2024]
+Finished job 2.
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 12:15:34 2024]
+localrule Clustering:
+    input: Filtered_data.rds
+    output: Meta_Data.csv, Clustering.rds
+    jobid: 3
+    reason: Missing output files: Clustering.rds, Meta_Data.csv; Input files updated by another job: Filtered_data.rds
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 12:16:58 2024]
+Finished job 3.
+3 of 4 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 12:16:58 2024]
+localrule all:
+    input: pbmc.rds, Filtered_data.rds, Meta_Data.csv, Clustering.rds
+    jobid: 0
+    reason: Input files updated by another job: pbmc.rds, Clustering.rds, Meta_Data.csv, Filtered_data.rds
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 12:16:58 2024]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: .snakemake/log/2024-06-25T121513.182081.snakemake.log

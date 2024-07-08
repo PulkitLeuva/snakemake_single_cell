@@ -1,0 +1,54 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+clustering          1
+find_markers        1
+total               3
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 14:22:47 2024]
+localrule clustering:
+    input: Filtered_data.rds
+    output: Meta_Data.csv, Clustering.rds
+    jobid: 3
+    reason: Missing output files: Clustering.rds, Meta_Data.csv
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 14:23:01 2024]
+Finished job 3.
+1 of 3 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 14:23:01 2024]
+localrule find_markers:
+    input: Clustering.rds
+    output: All_markers.txt, Top_Markers.txt
+    jobid: 4
+    reason: Input files updated by another job: Clustering.rds
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 14:23:05 2024]
+Error in rule find_markers:
+    jobid: 4
+    input: Clustering.rds
+    output: All_markers.txt, Top_Markers.txt
+    shell:
+        
+        Rscript Find_Markers.R Clustering.rds All_markers.txt Top_Markers.txt RNA_snn_res.0.05 TRUE 0.25 10 Heatmap_of_markers.pdf
+        code Top_Markers.txt
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-25T142246.912768.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

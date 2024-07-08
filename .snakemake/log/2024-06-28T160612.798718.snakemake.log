@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in rule filtering in file /home/pratik/snakemake/Snakemake_tutorial/Snakefile, line 34:
+Missing input files for rule filtering:
+    output: RDS_File/Filtered_data.rds
+    affected files:
+        RDS_File/pbmc.rds

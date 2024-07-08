@@ -1,0 +1,46 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+clustering          1
+find_markers        1
+total               3
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 15:20:29 2024]
+localrule clustering:
+    input: Filtered_data.rds
+    output: Meta_Data.csv, Clustering.rds, Clustering_Resolutions.csv
+    jobid: 3
+    reason: Missing output files: Meta_Data.csv, Clustering.rds
+    resources: tmpdir=/tmp
+
+[Thu Jun 27 15:20:40 2024]
+Finished job 3.
+1 of 3 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 15:20:40 2024]
+localrule find_markers:
+    input: Clustering.rds
+    output: All_markers.txt, Top_Markers.txt
+    jobid: 4
+    reason: Input files updated by another job: Clustering.rds; Code has changed since last execution
+    resources: tmpdir=/tmp
+
+RuleException in rule find_markers in file /home/pratik/snakemake/Snakemake_tutorial/Snakefile, line 90:
+IndexError: tuple index out of range, when formatting the following:
+
+        code {}
+        echo "Please enter the number of Resolutions: "
+        read Resolutions
+        Rscript Find_Markers.R {input.file} {output.file} {output.file2} $Resolutions {params.Onlypositive_FC_} {params.min_pct} {params.Top_listed_Genes} {params.pdf1} {params.pdf2} {params.dims}
+
+        

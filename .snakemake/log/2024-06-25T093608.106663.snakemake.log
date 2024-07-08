@@ -1,0 +1,37 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count
+----------  -------
+Clustering        1
+total             1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 09:36:08 2024]
+localrule Clustering:
+    input: Filtered_data.rds
+    output: Meta_Data.csv
+    jobid: 0
+    reason: Missing output files: Meta_Data.csv
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 09:36:12 2024]
+Error in rule Clustering:
+    jobid: 0
+    input: Filtered_data.rds
+    output: Meta_Data.csv
+    shell:
+        
+        Rscript Filtering_sc_data.R Filtered_data.rds Meta_Data.csv 
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-25T093608.106663.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

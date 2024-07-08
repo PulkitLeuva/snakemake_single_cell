@@ -1,0 +1,26 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+Find_Markers        1
+total               1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 10:57:49 2024]
+localrule Find_Markers:
+    input: Clustering.rds
+    output: ALl_markers.txt, Top_Markers.txt
+    jobid: 0
+    reason: Code has changed since last execution; Params have changed since last execution
+    resources: tmpdir=/tmp
+
+RuleException in rule Find_Markers in file /home/pratik/snakemake/Snakemake_tutorial/Snakefile, line 66:
+NameError: The name 'param' is unknown in this context. Please make sure that you defined that variable. Also note that braces not used for variable access have to be escaped by repeating them, i.e. {{print $1}}, when formatting the following:
+
+        Rscript Find_Markers.R {input.file} {output.file} {output.file2} {params.Cluster_Resolution} {params.Only_positive_FC} {params.min_pct} {params.Top_listed_Genes} {param.pdf}
+        

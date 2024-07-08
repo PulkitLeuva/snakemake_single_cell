@@ -1,0 +1,66 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+clustering          1
+filtering           1
+find_markers        1
+sample              1
+total               5
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 12:52:02 2024]
+localrule sample:
+    input: /home/pratik/IGIB/SCRNA_seq_data/SC3pv3_GEX_Human_PBMC_filtered_feature_bc_matrix.h5
+    output: pbmc.rds
+    jobid: 1
+    reason: Code has changed since last execution
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 12:52:24 2024]
+Finished job 1.
+1 of 5 steps (20%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 12:52:24 2024]
+localrule filtering:
+    input: pbmc.rds
+    output: Filtered_data.rds
+    jobid: 2
+    reason: Input files updated by another job: pbmc.rds
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 12:52:24 2024]
+Error in rule filtering:
+    jobid: 2
+    input: pbmc.rds
+    output: Filtered_data.rds
+    shell:
+        
+        cod Miochondrial_percentage.pdf
+        echo "Features which are Greater Than = "
+        read no_of_features_grt
+        echo "Features which are Less Than = "
+        read no_of_features_less
+        echo "Cells which have Mitochondrial Percentage Less Than = "
+        read mitochondrial_percent
+        echo "Number of Features which are Highly Variable = "
+        read variable_features
+        echo "Number of Features to be Highlighted = "
+        read top_features
+        Rscript Filtering_sc_data.R pbmc.rds Filtered_data.rds $no_of_features_grt $no_of_features_less $mitochondrial_percent $variable_features $top_features Highly_variable_Genes.pdf No_of_Cells_and_Features.pdf Scaled_Highly_variable_Genes.pdf PCA.pdf Top_10_PC.pdf Elbow_plot.pdf
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-25T125202.543096.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

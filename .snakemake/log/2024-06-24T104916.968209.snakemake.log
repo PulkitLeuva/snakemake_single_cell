@@ -1,0 +1,24 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job          count
+---------  -------
+filtering        1
+total            1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jun 24 10:49:17 2024]
+localrule filtering:
+    input: pbmc.rds
+    jobid: 0
+    reason: Rules with a run or shell declaration but no output are always executed.
+    resources: tmpdir=/tmp
+
+[Mon Jun 24 10:49:22 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-24T104916.968209.snakemake.log

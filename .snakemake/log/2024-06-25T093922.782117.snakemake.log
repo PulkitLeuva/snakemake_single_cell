@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count
+----------  -------
+Clustering        1
+total             1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 09:39:23 2024]
+localrule Clustering:
+    input: Filtered_data.rds
+    output: Meta_Data.csv
+    jobid: 0
+    reason: Missing output files: Meta_Data.csv
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 09:39:28 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-25T093922.782117.snakemake.log

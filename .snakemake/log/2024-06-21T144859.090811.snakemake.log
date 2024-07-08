@@ -1,0 +1,39 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job       count
+------  -------
+sample        1
+total         1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 14:48:59 2024]
+localrule sample:
+    input: /home/pratik/IGIB/SCRNA_seq_data/SC3pv3_GEX_Human_PBMC_filtered_feature_bc_matrix.h5
+    output: pbmc.rds
+    jobid: 0
+    reason: Code has changed since last execution; Params have changed since last execution
+    resources: tmpdir=/tmp
+
+[Fri Jun 21 14:49:08 2024]
+Error in rule sample:
+    jobid: 0
+    input: /home/pratik/IGIB/SCRNA_seq_data/SC3pv3_GEX_Human_PBMC_filtered_feature_bc_matrix.h5
+    output: pbmc.rds
+    shell:
+        
+        Rscript sample.R /home/pratik/IGIB/SCRNA_seq_data/SC3pv3_GEX_Human_PBMC_filtered_feature_bc_matrix.h5 pbmc.rds 3 200 Number_of_Genes.pdf Miochondrial_percentage.pdf scatter_plot.pdf
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job sample since they might be corrupted:
+pbmc.rds
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-21T144859.090811.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

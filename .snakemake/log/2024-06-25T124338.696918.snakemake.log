@@ -1,0 +1,23 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+clustering          1
+find_markers        1
+total               3
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 12:43:38 2024]
+localrule clustering:
+    input: Filtered_data.rds
+    output: Meta_Data.csv, Clustering.rds
+    jobid: 3
+    reason: Code has changed since last execution
+    resources: tmpdir=/tmp
+

@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+Find_Markers        1
+total               1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 10:58:10 2024]
+localrule Find_Markers:
+    input: Clustering.rds
+    output: ALl_markers.txt, Top_Markers.txt
+    jobid: 0
+    reason: Code has changed since last execution; Params have changed since last execution
+    resources: tmpdir=/tmp
+
+[Tue Jun 25 10:58:19 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-25T105810.277757.snakemake.log

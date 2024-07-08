@@ -1,0 +1,21 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job       count
+------  -------
+sample        1
+total         1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 18:31:19 2024]
+localrule sample:
+    input: /home/pratik/IGIB/SCRNA_seq_data/SC3pv3_GEX_Human_PBMC_filtered_feature_bc_matrix.h5
+    output: pbmc.rds
+    jobid: 0
+    reason: Missing output files: pbmc.rds
+    resources: tmpdir=/tmp
+

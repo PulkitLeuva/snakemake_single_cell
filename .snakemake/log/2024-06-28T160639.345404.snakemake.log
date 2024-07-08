@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in rule all in file /home/pratik/snakemake/Snakemake_tutorial/Snakefile, line 1:
+Missing input files for rule all:
+    affected files:
+        RDS_File/pbmc.rds
